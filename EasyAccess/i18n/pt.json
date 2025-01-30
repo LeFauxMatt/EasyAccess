@@ -1,0 +1,16 @@
+{
+  "config-option.collect-items.name": "Collect Items",
+  "config-option.collect-items.description": "Key to collect items from producers within distance.",
+  "config-option.dispense-items.name": "Dispense Items",
+  "config-option.dispense-items.description": "Key to dispense items into producers within distance.",
+  "config-option.distance.name": "Distance",
+  "config-option.distance.description": "The distance in which producers can be interacted with.",
+  "config-option.collect-dig-spots.name": "Dig Spots",
+  "config-option.collect-dig-spots.description": "Collect dig spots",
+  "config-option.collect-forage.name": "Foraging",
+  "config-option.collect-forage.description": "Collect foraging.",
+  "config-option.collect-machines.name": "Machines",
+  "config-option.collect-machines.description": "Collect from machines outputs.",
+  "config-option.collect-terrain.name": "Terrain Features",
+  "config-option.collect-terrain.description": "Collect from trees, bushes, etc."
+}
