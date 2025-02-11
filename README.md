@@ -21,9 +21,11 @@ from [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098
 
 Collect items from machines.
 
-![Carry Chest](docs/carry-chest.png)
+![Collect Items](docs/collect-items.png)
 
 Fill machines with items.
+
+![Dispense Items](docs/dispense-items.png)
 
 ## Translations
 
