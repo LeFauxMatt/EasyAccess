@@ -1,121 +1,105 @@
-using LeFauxMods.Common.Integrations.GenericModConfigMenu;
 using LeFauxMods.Common.Services;
 using LeFauxMods.EasyAccess.Models;
 
 namespace LeFauxMods.EasyAccess.Services;
 
-/// <summary>Responsible for handling the mod configuration menu.</summary>
-internal sealed class ConfigMenu
+/// <inheritdoc />
+internal sealed class ConfigMenu(IModHelper helper, IManifest manifest)
+    : BaseConfigMenu<ModConfig>(helper, manifest)
 {
-    private readonly IGenericModConfigMenuApi api = null!;
-    private readonly GenericModConfigMenuIntegration gmcm;
-    private readonly IManifest manifest;
+    /// <inheritdoc />
+    protected override ModConfig Config => ModState.ConfigHelper.Temp;
 
-    public ConfigMenu(IModHelper helper, IManifest manifest)
+    /// <inheritdoc />
+    protected override ConfigHelper<ModConfig> ConfigHelper => ModState.ConfigHelper;
+
+    /// <inheritdoc />
+    protected internal override void SetupOptions()
     {
-        this.manifest = manifest;
-        this.gmcm = new GenericModConfigMenuIntegration(manifest, helper.ModRegistry);
-        if (!this.gmcm.IsLoaded)
-        {
-            return;
-        }
-
-        this.api = this.gmcm.Api;
-        this.SetupMenu();
-    }
-
-    private static ModConfig Config => ModState.ConfigHelper.Temp;
-
-    private static ConfigHelper<ModConfig> ConfigHelper => ModState.ConfigHelper;
-
-    private void SetupMenu()
-    {
-        this.gmcm.Register(ConfigHelper.Reset, ConfigHelper.Save);
-
-        this.api.AddKeybindList(
-            this.manifest,
-            static () => Config.CollectItems,
-            static value => Config.CollectItems = value,
+        this.Api.AddKeybindList(
+            this.Manifest,
+            () => this.Config.CollectItems,
+            value => this.Config.CollectItems = value,
             I18n.ConfigOption_CollectItems_Name,
             I18n.ConfigOption_CollectItems_Description);
 
-        this.api.AddKeybindList(
-            this.manifest,
-            static () => Config.DispenseItems,
-            static value => Config.DispenseItems = value,
+        this.Api.AddKeybindList(
+            this.Manifest,
+            () => this.Config.DispenseItems,
+            value => this.Config.DispenseItems = value,
             I18n.ConfigOption_DispenseItems_Name,
             I18n.ConfigOption_DispenseItems_Description);
 
-        this.api.AddNumberOption(
-            this.manifest,
-            static () => Config.Distance,
-            static value => Config.Distance = value,
+        this.Api.AddNumberOption(
+            this.Manifest,
+            () => this.Config.Distance,
+            value => this.Config.Distance = value,
             I18n.ConfigOption_Distance_Name,
             I18n.ConfigOption_Distance_Description);
 
-        this.api.AddBoolOption(
-            this.manifest,
-            static () => Config.CollectionTypes.Contains(CollectionType.DigSpots),
-            static value =>
+        this.Api.AddBoolOption(
+            this.Manifest,
+            () => this.Config.CollectionTypes.Contains(CollectionType.DigSpots),
+            value =>
             {
                 if (value)
                 {
-                    Config.CollectionTypes.Add(CollectionType.DigSpots);
+                    this.Config.CollectionTypes.Add(CollectionType.DigSpots);
                 }
                 else
                 {
-                    Config.CollectionTypes.Remove(CollectionType.DigSpots);
+                    this.Config.CollectionTypes.Remove(CollectionType.DigSpots);
                 }
             },
             I18n.ConfigOption_CollectDigSpots_Name,
             I18n.ConfigOption_CollectDigSpots_Description);
 
-        this.api.AddBoolOption(
-            this.manifest,
-            static () => Config.CollectionTypes.Contains(CollectionType.Forage),
-            static value =>
+        this.Api.AddBoolOption(
+            this.Manifest,
+            () => this.Config.CollectionTypes.Contains(CollectionType.Forage),
+            value =>
             {
                 if (value)
                 {
-                    Config.CollectionTypes.Add(CollectionType.Forage);
+                    this.Config.CollectionTypes.Add(CollectionType.Forage);
                 }
                 else
                 {
-                    Config.CollectionTypes.Remove(CollectionType.Forage);
+                    this.Config.CollectionTypes.Remove(CollectionType.Forage);
                 }
             },
             I18n.ConfigOption_CollectForage_Name,
             I18n.ConfigOption_CollectForage_Description);
 
-        this.api.AddBoolOption(
-            this.manifest,
-            static () => Config.CollectionTypes.Contains(CollectionType.Machines),
-            static value =>
+        this.Api.AddBoolOption(
+            this.Manifest,
+            () => this.Config.CollectionTypes.Contains(CollectionType.Machines),
+            value =>
             {
                 if (value)
                 {
-                    Config.CollectionTypes.Add(CollectionType.Machines);
+                    this.Config.CollectionTypes.Add(CollectionType.Machines);
                 }
                 else
                 {
-                    Config.CollectionTypes.Remove(CollectionType.Machines);
+                    this.Config.CollectionTypes.Remove(CollectionType.Machines);
                 }
             },
             I18n.ConfigOption_CollectMachines_Name,
             I18n.ConfigOption_CollectMachines_Description);
 
-        this.api.AddBoolOption(
-            this.manifest,
-            static () => Config.CollectionTypes.Contains(CollectionType.Terrain),
-            static value =>
+        this.Api.AddBoolOption(
+            this.Manifest,
+            () => this.Config.CollectionTypes.Contains(CollectionType.Terrain),
+            value =>
             {
                 if (value)
                 {
-                    Config.CollectionTypes.Add(CollectionType.Terrain);
+                    this.Config.CollectionTypes.Add(CollectionType.Terrain);
                 }
                 else
                 {
-                    Config.CollectionTypes.Remove(CollectionType.Terrain);
+                    this.Config.CollectionTypes.Remove(CollectionType.Terrain);
                 }
             },
             I18n.ConfigOption_CollectTerrain_Name,

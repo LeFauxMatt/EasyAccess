@@ -32,12 +32,12 @@ Fill machines with items.
 |            |         Easy Access          |
 | :--------- | :---------------------------: |
 | Chinese    | [❌️](EasyAccess/i18n/zh.json) |
-| French     | [❔](EasyAccess/i18n/fr.json) |
+| French     | [❌️](EasyAccess/i18n/fr.json) |
 | German     | [❌️](EasyAccess/i18n/de.json) |
 | Hungarian  | [❌️](EasyAccess/i18n/hu.json) |
 | Italian    | [❌️](EasyAccess/i18n/it.json) |
 | Japanese   | [❌️](EasyAccess/i18n/ja.json) |
-| Korean     | [❔](EasyAccess/i18n/ko.json) |
+| Korean     | [❌️](EasyAccess/i18n/ko.json) |
 | Portuguese | [❌️](EasyAccess/i18n/pt.json) |
 | Russian    | [❌️](EasyAccess/i18n/ru.json) |
 | Spanish    | [❌️](EasyAccess/i18n/es.json) |
